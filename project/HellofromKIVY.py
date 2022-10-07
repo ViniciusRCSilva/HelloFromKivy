@@ -20,25 +20,61 @@ class HellofromKIVY(App):
         self.window.add_widget(Image(source = "../logo.png"))
 
         #label widget
-        self.greeting = Label(
-                text="What's your name?",
+        self.widget = Label(
+                text="LOGIN",
                 font_size = 18,
             )
-        self.window.add_widget(self.greeting)
+        self.window.add_widget(self.widget)
+
+        #label widget
+        self.widget = Label(
+                text="Name",
+                font_size = 16,
+            )
+        self.window.add_widget(self.widget)
 
         #text input widget
-        self.user = TextInput(
+        self.userName = TextInput(
+                background_color = "#bfbfbf",
+                background_active="#ffffff",
                 multiline = False,
                             #pixels
                 padding_y = (20, 20),
                             #(width, heigh)
-                size_hint = (1, 0.5),
+                size_hint = (1, 1),
             )
-        self.window.add_widget(self.user)
+        self.window.add_widget(self.userName)
+
+        #label widget
+        self.widget = Label(
+                text="Password",
+                font_size = 16,
+            )
+        self.window.add_widget(self.widget)
+
+        #text input widget
+        self.userPassword = TextInput(
+                background_color = "#bfbfbf",
+                background_active="#ffffff",
+                password=True,
+                multiline = False,
+                            #pixels
+                padding_y = (20, 20),
+                            #(width, heigh)
+                size_hint = (1, 1),
+            )
+        self.window.add_widget(self.userPassword)
+
+        #label widget
+        self.greeting = Label(
+                text="",
+                font_size = 18,
+            )
+        self.window.add_widget(self.greeting)
 
         #button widget
         self.button = Button(
-                text="GREET",
+                text="SIGN IN",
                 size_hint = (1, 0.5),
                 bold = True,
                 background_color = '#370387ff',
@@ -50,10 +86,10 @@ class HellofromKIVY(App):
         return self.window
 
     def callback(self, instance):
-        if (self.user.text == ''):
-            self.greeting.text = "Enter a name!"
+        if (self.userName.text == '' or self.userPassword.text == ''):
+            self.greeting.text = "Enter a name or password!"
         else:
-            self.greeting.text = "Kivy says hello to " + self.user.text + "!"
+            self.greeting.text = "Welcome " + self.userName.text + "!"
 
 
 HellofromKIVY().run()
